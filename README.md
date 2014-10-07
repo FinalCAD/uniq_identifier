@@ -36,6 +36,14 @@ add uuid in your model like that:
   my_foo = Foo.where(uuid: "0c6bbc03-a269-44e2-8075-f442e1aac0c8")
   my_foo.id # => 1
 
+## Configuration
+
+add app/config/initializers/uniq_identifier.rb
+
+  UniqIdentifier.configuration do |conf|
+    conf.generator = SecureRandom
+  end
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/uniq_identifier/fork )
