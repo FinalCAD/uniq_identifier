@@ -12,7 +12,7 @@ Coveralls.wear!
 ENV['ADAPTER'] ||= 'active_record'
 load File.dirname(__FILE__) + "/support/adapters/#{ENV['ADAPTER']}.rb"
 
-UniqIdentifier.configuration do |conf|
+UniqIdentifier.configure do |conf|
   conf.generator = begin
     Class.new do
       def self.uuid
