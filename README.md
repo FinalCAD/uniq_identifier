@@ -1,0 +1,45 @@
+# UniqIdentifier
+
+Add an uniq identifier on your models.
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'uniq_identifier'
+```
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install uniq_identifier
+
+## Usage
+
+add uuid in your model like that:
+
+  class Foo < ActiveRecord::Base
+    uniq_identifier
+  end
+
+  foo = Foo.new
+  foo.id   # => nil
+  foo.uuid # => "0c6bbc03-a269-44e2-8075-f442e1aac0c8"
+
+  foo.create!
+  foo.id # => 1
+
+  my_foo = Foo.where(uuid: "0c6bbc03-a269-44e2-8075-f442e1aac0c8")
+  my_foo.id # => 1
+
+## Contributing
+
+1. Fork it ( https://github.com/[my-github-username]/uniq_identifier/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
