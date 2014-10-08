@@ -2,6 +2,7 @@ require 'securerandom'
 
 module UniqIdentifier
   module Generator
+
     def self.included(base)
       base.extend(self)
     end
