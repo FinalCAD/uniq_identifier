@@ -1,20 +1,9 @@
 require_relative 'uniq_identifier/railtie' if defined?(Rails)
 require_relative 'uniq_identifier/generator'
-require_relative 'uniq_identifier/configuration'
+require_relative 'uniq_identifier/configure'
 
 module UniqIdentifier
-
-  class << self
-    attr_writer :configuration
-  end
-
-  def self.configuration
-    @configuration ||= Configuration.new
-  end
-
-  def self.configure
-    yield(configuration)
-  end
+  extend Configure
 
   def uniq_identifier
     include Generator
