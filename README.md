@@ -44,6 +44,10 @@ add app/config/initializers/uniq_identifier.rb
     conf.generator = SecureRandom
   end
 
+you can use the generator
+
+  rails g uniq_identifier:install User
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/uniq_identifier/fork )
