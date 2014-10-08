@@ -12,26 +12,20 @@ module UniqIdentifier
         ActiveRecord::Generators::Base.next_migration_number(path)
       end
 
-      # :migration_file_name, :migration_class_name
-
       desc <<DESC
 description :
     add migration file to choosen model
     rails generate uniq_identifier:add <model>
 DESC
       def add_migration_file
-        # binding.pry
-        # template 'uniq_identifier.rb', "config/initializers/uniq_identifier.rb"
         migration_template 'migration.rb', "db/migrate/add_uuid_user.rb"
-        # migration_template "migration.rb", "db/migrate/add_foo_to_bar.rb"
-      #         hook   = 'uniq_identifier'
-      # data   = "\n"
-      # data += indent("#{hook}")
-      # header = "class #{class_name} < ActiveRecord::Base"
-      # model_path = File.join('app', 'models', "#{file_path}.rb")
-      # binding.pry
-      # inject_into_file model_path, data, after: /header/, verbose: true
-
+        hook   = 'uniq_identifier'
+        data   = "\n"
+        data += indent("#{hook}")
+        header = "class #{class_name} < ActiveRecord::Base"
+        model_path = File.join('app', 'models', "#{file_path}.rb")
+        inject_into_file model_path, data, after: header, verbose: true
+        readme('./README')
       end
     end
 

@@ -4,7 +4,7 @@ require 'rails/generators'
 require 'ammeter/init'
 
 # Generators are not automatically loaded by Rails
-require_relative '../../../lib/generators/uniq_identifier/install/install_generator'
+require_relative '../../../lib/generators/uniq_identifier/install_generator'
 
 module UniqIdentifier
   module Generators
