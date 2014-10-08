@@ -1,0 +1,8 @@
+Now, you just have to run the migration using rake command:
+
+   rake db:migrate
+
+and you will be able to add the uniq_identifier method inside all models you want
+add an uniq identifier.
+
+===============================================================================
