@@ -1,5 +1,4 @@
-require 'uniq_identifier/version'
-require 'securerandom'
+require_relative 'uniq_identifier/railtie' if defined?(Rails)
 require_relative 'uniq_identifier/generator'
 require_relative 'uniq_identifier/configuration'
 

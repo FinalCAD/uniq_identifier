@@ -13,5 +13,5 @@ group :test do
   end
   gem 'coveralls', require: false
   gem 'pry'
-  gem 'generator_spec'
+  gem 'ammeter'
 end

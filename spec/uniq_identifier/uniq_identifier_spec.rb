@@ -2,12 +2,16 @@ require 'spec_helper'
 
 describe UniqIdentifier do
   let(:user) { User.new }
+
   specify do
     expect(user.uuid).to match(/(.*)-(.*)-(.*)-(.*)-(.*)/)
   end
+
   context 'persistence' do
     let(:user_id) { user.id }
+
     before { user.save! }
+
     specify do
       expect(User.find(user_id).uuid).to match(/(.*)-(.*)-(.*)-(.*)-(.*)/)
     end
