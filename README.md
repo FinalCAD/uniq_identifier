@@ -46,7 +46,8 @@ add app/config/initializers/uniq_identifier.rb
 
 you can use the generator
 
-  rails g uniq_identifier:install User
+  rails g uniq_identifier:install
+  rails g uniq_identifier:add <model>
 
 ## Contributing
 
