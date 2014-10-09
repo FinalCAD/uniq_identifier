@@ -1,4 +1,5 @@
-require 'rails/generators/active_record'
+require 'rails/generators/active_record' if defined?(ActiveRecord)
+require 'rails/generators/migration'
 
 module UniqIdentifier
   module Generators
@@ -23,6 +24,11 @@ DESC
         hook   = 'uniq_identifier'
         data   = "\n"
         data += indent("#{hook}")
+
+        if options.orm == 'mongoid'
+          data += "\n"
+          data += indent("field :uuid, type: String")
+        end
 
         if options.orm == :active_record
           header = "class #{class_name} < ActiveRecord::Base"
