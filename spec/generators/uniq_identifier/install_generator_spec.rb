@@ -14,7 +14,6 @@ module UniqIdentifier
 
       before do
         prepare_destination
-
       end
 
       after do

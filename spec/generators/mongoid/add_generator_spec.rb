@@ -8,12 +8,13 @@ require_relative '../../../lib/generators/uniq_identifier/add_generator'
 
 module UniqIdentifier
   module Generators
-    describe AddGenerator do
+    describe AddGenerator, skip: true do
       # Tell the generator where to put its output (what it thinks of as Rails.root)
       destination File.expand_path('../../../../tmp', __FILE__)
       let(:user_content) do
         <<-CONTENT
-class User < ActiveRecord::Base
+class User
+  include Mongoid::Document
 end
         CONTENT
       end
@@ -31,16 +32,14 @@ end
 
       describe 'the generated files' do
         before do
-          expect(AddGenerator).to receive(:next_migration_number) { '20141008141816' }
-          run_generator ['User']
+          run_generator ['User', '--orm=mongoid']
         end
-        describe 'the spec' do
-          let(:file_path) { 'db/migrate/20141008141816_add_uuid_user.rb' }
 
+        describe 'add hook' do
+          let(:file_path) { 'app/models/user.rb' }
           subject { file(file_path) }
-
           specify do
-            expect(File.exists?("#{destination_root}/#{file_path}")).to be_truthy
+            expect(File.new(file_path)).to match(/uniq_identifier/)
           end
         end
       end

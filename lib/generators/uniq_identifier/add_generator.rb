@@ -1,10 +1,10 @@
-require 'pry'
 require 'rails/generators/active_record'
 
 module UniqIdentifier
   module Generators
     class AddGenerator < Rails::Generators::NamedBase
       include Rails::Generators::Migration
+      class_option :orm, type: :string, default: :active_record
 
       source_root File.expand_path('../templates', __FILE__)
 
@@ -14,18 +14,26 @@ module UniqIdentifier
 
       desc <<DESC
 description :
-    add migration file to choosen model
-    rails generate uniq_identifier:add <model>
+  add migration file to choosen model
+  rails generate uniq_identifier:add model_name
 DESC
       def add_migration_file
-        migration_template 'migration.rb', "db/migrate/add_uuid_user.rb"
+        migration_template 'migration.rb', "db/migrate/add_uuid_#{file_path}.rb" if options.orm == :active_record
+
         hook   = 'uniq_identifier'
         data   = "\n"
         data += indent("#{hook}")
-        header = "class #{class_name} < ActiveRecord::Base"
+
+        if options.orm == :active_record
+          header = "class #{class_name} < ActiveRecord::Base"
+        else
+          header = 'include Mongoid::Document'
+        end
+
         model_path = File.join('app', 'models', "#{file_path}.rb")
         inject_into_file model_path, data, after: header, verbose: true
-        readme('./README')
+
+        readme("./README-#{options.orm}")
       end
     end
 
