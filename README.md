@@ -49,6 +49,10 @@ you can use the generator
   rails g uniq_identifier:install
   rails g uniq_identifier:add <model>
 
+for mongoid use
+
+  rails g uniq_identifier:add <model> --orm=mongoid
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/uniq_identifier/fork )

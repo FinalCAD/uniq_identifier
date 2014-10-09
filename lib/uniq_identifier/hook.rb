@@ -1,7 +1,7 @@
 require 'securerandom'
 
 module UniqIdentifier
-  module Generator
+  module Hook
 
     def self.included(base)
       base.extend(self)

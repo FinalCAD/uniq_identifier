@@ -13,13 +13,7 @@ ENV['ADAPTER'] ||= 'active_record'
 load File.dirname(__FILE__) + "/support/adapters/#{ENV['ADAPTER']}.rb"
 
 UniqIdentifier.configure do |conf|
-  conf.generator = begin
-    Class.new do
-      def self.uuid
-        "0c6bbc03-a269-44e2-8075-f442e1aac0c8"
-      end
-    end
-  end
+  conf.generator = UniqIdentifier::FakeGenerator
 end
 
 RSpec.configure do |c|
