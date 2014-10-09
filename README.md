@@ -30,37 +30,49 @@ Or install it yourself as:
 
 add uuid in your model like that:
 
-  class Foo < ActiveRecord::Base
-    uniq_identifier
-  end
+```ruby
+class Foo < ActiveRecord::Base
+  uniq_identifier
+end
+```
 
-  foo = Foo.new
-  foo.id   # => nil
-  foo.uuid # => "0c6bbc03-a269-44e2-8075-f442e1aac0c8"
+```ruby
+foo = Foo.new
+foo.id   # => nil
+foo.uuid # => "0c6bbc03-a269-44e2-8075-f442e1aac0c8"
+```
 
-  foo.create!
-  foo.id # => 1
+```ruby
+foo.create!
+foo.id # => 1
+```
 
-  my_foo = Foo.where(uuid: "0c6bbc03-a269-44e2-8075-f442e1aac0c8")
-  my_foo.id # => 1
+```ruby
+my_foo = Foo.where(uuid: "0c6bbc03-a269-44e2-8075-f442e1aac0c8")
+my_foo.id # => 1
+```
 
 ## Configuration
 
 add app/config/initializers/uniq_identifier.rb
 
-  UniqIdentifier.configuration do |conf|
-    conf.generator = SecureRandom
-  end
+```ruby
+UniqIdentifier.configuration do |conf|
+  conf.generator = SecureRandom
+end
+```
 
 you can use the generator
 
-  rails g uniq_identifier:install
-  rails g uniq_identifier:add <model>
-
+```ruby
+rails g uniq_identifier:install
+rails g uniq_identifier:add <model>
+```
 for mongoid use
 
-  rails g uniq_identifier:add <model> --orm=mongoid
-
+```ruby
+rails g uniq_identifier:add <model> --orm=mongoid
+```
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/uniq_identifier/fork )
