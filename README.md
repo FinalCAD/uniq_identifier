@@ -8,7 +8,7 @@
 
 [![Coverage Status](https://coveralls.io/repos/joel/uniq_identifier/badge.png)](https://coveralls.io/r/joel/uniq_identifier)
 
-Add an uniq identifier on your models.
+Add an uniq identifier on your models. For make your model agnostic from backend unique identifier.
 
 ## Installation
 
