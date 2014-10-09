@@ -1,5 +1,13 @@
 # UniqIdentifier
 
+[![Code Climate](https://codeclimate.com/github/joel/uniq_identifier.png)](https://codeclimate.com/github/joel/uniq_identifier)
+
+[![Dependency Status](https://gemnasium.com/joel/uniq_identifier.png)](https://gemnasium.com/joel/uniq_identifier)
+
+[![Build Status](https://travis-ci.org/joel/uniq_identifier.png?branch=master)](https://travis-ci.org/joel/uniq_identifier) (Travis CI)
+
+[![Coverage Status](https://coveralls.io/repos/joel/uniq_identifier/badge.png)](https://coveralls.io/r/joel/uniq_identifier)
+
 Add an uniq identifier on your models.
 
 ## Installation
