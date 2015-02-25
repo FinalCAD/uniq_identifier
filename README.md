@@ -6,7 +6,7 @@
 
 [![Build Status](https://travis-ci.org/joel/uniq_identifier.png?branch=master)](https://travis-ci.org/joel/uniq_identifier) (Travis CI)
 
-[![Coverage Status](https://coveralls.io/repos/joel/uniq_identifier/badge.png)](https://coveralls.io/r/joel/uniq_identifier)
+[![Coverage Status](https://coveralls.io/repos/joel/uniq_identifier/badge.svg?branch=master)](https://coveralls.io/r/joel/uniq_identifier?branch=master)
 
 Add an uniq identifier on your models. For make your model agnostic from backend unique identifier.
 
