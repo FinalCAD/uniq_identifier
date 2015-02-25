@@ -1,4 +1,4 @@
-class UniqIdentifierAddUuid<%= class_name %> < ActiveRecord::Migration
+class AddUuid<%= class_name %> < ActiveRecord::Migration
   def change
     change_table(:<%= plural_name %>) do |t|
       t.string :uuid
