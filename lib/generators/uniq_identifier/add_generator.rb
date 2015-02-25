@@ -16,6 +16,7 @@ module UniqIdentifier
       desc <<DESC
 description :
   add migration file to choosen model
+  rails generate uniq_identifier:add model_name --orm=mongoid
   rails generate uniq_identifier:add model_name
 DESC
       def add_migration_file
