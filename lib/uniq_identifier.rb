@@ -9,5 +9,6 @@ module UniqIdentifier
   def uniq_identifier
     include Hook
     after_initialize :set_uniq_identifier
+    after_validation :set_uniq_identifier # Case of manual attempt to do a nil assignation 
   end
 end
