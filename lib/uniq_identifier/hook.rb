@@ -8,7 +8,11 @@ module UniqIdentifier
     end
 
     def set_uniq_identifier
-      self.send(:uuid=, UniqIdentifier.configuration.generator.uuid)
+      if self.respond_to?(:uuid)
+        unless self.uuid?
+          self.send(:uuid=, UniqIdentifier.configuration.generator.uuid)
+        end
+      end
     end
   end
 end
