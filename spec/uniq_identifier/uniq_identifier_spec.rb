@@ -3,6 +3,10 @@ require 'spec_helper'
 describe UniqIdentifier do
   let(:user) { User.new }
 
+  before do
+    user.valid?
+  end
+
   specify do
     expect(user.uuid).to match(/(.*)-(.*)-(.*)-(.*)-(.*)/)
   end

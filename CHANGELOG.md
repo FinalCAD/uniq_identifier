@@ -1,3 +1,9 @@
+### VERSION 0.0.5
+
+* Enhancements
+  * decrease time of migration for big table
+  * change after initialize to before validation for avoid loading this hook each time we have an instance (iteration case) 
+
 ### VERSION 0.0.4
 
 * Enhancements
