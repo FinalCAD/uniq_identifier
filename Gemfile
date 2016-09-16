@@ -7,7 +7,7 @@ group :test do
   case ENV['ADAPTER']
   when nil, 'active_record'
     gem 'sqlite3', platform: 'ruby'
-    gem 'activerecord'
+    gem 'activerecord', '4.2.0'
   when 'mongoid'
     gem 'mongoid'
   else
@@ -15,5 +15,5 @@ group :test do
   end
   gem 'coveralls', require: false
   gem 'pry'
-  gem 'ammeter'
+  # gem 'ammeter'
 end
