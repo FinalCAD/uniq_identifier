@@ -1,8 +1,14 @@
+### VERSION 0.0.6
+
+* Enhancements
+  * Lazy assignation of UUID
+  * UUID always available, not only after validation
+
 ### VERSION 0.0.5
 
 * Enhancements
   * decrease time of migration for big table
-  * change after initialize to before validation for avoid loading this hook each time we have an instance (iteration case) 
+  * change after initialize to before validation for avoid loading this hook each time we have an instance (iteration case)
 
 ### VERSION 0.0.4
 
@@ -18,7 +24,7 @@
 ### VERSION 0.0.2
 
 * Enhancements
-  * Litle enhancement
+  * Little enhancement
 
 ### VERSION 0.0.1
 

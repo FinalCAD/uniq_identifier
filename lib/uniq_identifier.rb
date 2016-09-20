@@ -7,7 +7,7 @@ module UniqIdentifier
   extend Configure
 
   def uniq_identifier
-    include Hook
-    before_validation :set_uniq_identifier
+    prepend Hook
+    before_save :set_uniq_identifier
   end
 end

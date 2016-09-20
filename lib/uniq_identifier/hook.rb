@@ -3,16 +3,16 @@ require 'securerandom'
 module UniqIdentifier
   module Hook
 
-    def self.included(base)
-      base.extend(self)
+    def uuid(*args, &block)
+      if super(*args).nil?
+        self.send(:uuid=, UniqIdentifier.configuration.generator.uuid)
+      end
+
+      super(*args)
     end
 
     def set_uniq_identifier
-      if self.respond_to?(:uuid)
-        unless self.uuid?
-          self.send(:uuid=, UniqIdentifier.configuration.generator.uuid)
-        end
-      end
+      self.uuid # Just call lazy loading
     end
   end
 end
