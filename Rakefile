@@ -13,14 +13,13 @@ task :default => [ :spec ]
 
 desc 'Run all specs'
 task 'spec' do
-  # Rake::Task['generators'].invoke
-  # return_code1 = $?.exitstatus
+  Rake::Task['generators'].invoke
+  return_code1 = $?.exitstatus
 
   Rake::Task['uniq_identifier'].invoke
   return_code2 = $?.exitstatus
 
-  # fail if return_code1 != 0 || return_code2 != 0
-  fail if return_code2 != 0
+  fail if return_code1 != 0 || return_code2 != 0
 end
 
 desc 'Run specs for all adapters'

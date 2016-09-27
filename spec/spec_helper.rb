@@ -2,6 +2,8 @@ require 'uniq_identifier'
 require 'bundler/setup'
 require 'coveralls'
 
+require 'rails/all'
+
 begin
   require 'pry'
 rescue LoadError

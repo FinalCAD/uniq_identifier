@@ -15,5 +15,5 @@ group :test do
   end
   gem 'coveralls', require: false
   gem 'pry'
-  # gem 'ammeter'
+  gem 'ammeter', '1.1.4'
 end
