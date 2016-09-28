@@ -8,6 +8,8 @@
 
 [![Coverage Status](https://coveralls.io/repos/joel/uniq_identifier/badge.svg?branch=master)](https://coveralls.io/r/joel/uniq_identifier?branch=master)
 
+[![Gem Version](https://badge.fury.io/rb/uniq_identifier.svg)](https://badge.fury.io/rb/uniq_identifier)
+
 Add an uniq identifier on your models. For make your model agnostic from backend unique identifier.
 
 ## Installation
