@@ -9,5 +9,6 @@ module UniqIdentifier
   def uniq_identifier
     prepend Hook
     before_save :set_uniq_identifier
+    validates :uuid, presence: true, uniqueness: true
   end
 end

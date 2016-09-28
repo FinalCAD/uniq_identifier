@@ -1,3 +1,12 @@
+### VERSION 0.0.7
+
+* Enhancements
+  * Add validation model of presence and uniqueness
+  * Update Ruby from 2.1.2 to 2.3.1
+  * Use last version of the gem Ammeter => 1.1.4
+  * Re-add generator specs
+  * Add bin/console
+
 ### VERSION 0.0.6
 
 * Enhancements

@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+
+require 'uniq_identifier'
+
+require 'irb'
+IRB.start
