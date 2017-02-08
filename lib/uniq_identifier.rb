@@ -9,6 +9,6 @@ module UniqIdentifier
   def uniq_identifier
     prepend Hook
     before_save :set_uniq_identifier
-    validates :uuid, presence: true, uniqueness: true
+    validates :uuid, presence: true, uniqueness: self.column_names.include?("deleted_at") ? { scope: :deleted_at } : true
   end
 end
