@@ -4,67 +4,75 @@ describe UniqIdentifier do
   let(:user) { User.new }
   let(:fake_uuid) { SecureRandom.uuid }
 
-  before do
-    allow(UniqIdentifier).to receive_message_chain('configuration.generator.uuid') { fake_uuid }
+  context 'all settings default' do
+    let(:fake_uuid) { UniqIdentifier::FakeGenerator.uuid }
+
+    let(:default_settings_class) { ClassGenerator.generate }
+
+    it 'must set uuid for new record' do
+      expect(default_settings_class.new.uuid).to be_eql fake_uuid
+    end
+
+    it 'must have callback method' do
+      expect(default_settings_class.new).to respond_to :set_uniq_identifier
+    end
   end
 
-  specify 'lazy load' do
-    expect {
-      expect(user.uuid).to eql(fake_uuid)
-    }.to change {
-      user.attributes['uuid']
-    }.from(nil).to(fake_uuid)
+  context 'generator option' do
+    let(:fake_uuid) { '0c6bbc03-a269-44e2-8075-f442e1aac0c1' }
+    let(:default_uuid) { UniqIdentifier::FakeGenerator.uuid }
+    let(:generator) { OpenStruct.new(uuid: fake_uuid) }
+
+    let!(:custom_settings_class) { ClassGenerator.generate generator: generator }
+    let!(:default_settings_class) { ClassGenerator.generate }
+    let!(:nil_settings_class) { ClassGenerator.generate generator: nil }
+
+    it 'must have different generator when some was given' do
+      default_generator_current = default_settings_class.uniq_identifier_generator
+      custom_generator_current = custom_settings_class.uniq_identifier_generator
+      expect(default_generator_current).to_not be_eql custom_generator_current
+    end
+
+    it 'must use given generator' do
+      expect(custom_settings_class.uniq_identifier_generator).to be_eql generator
+    end
+
+    it 'must accept nil as generator when option was given' do
+      expect(nil_settings_class.uniq_identifier_generator).to be_eql nil
+    end
+
+    it 'must nil as generator can\'t raise error'  do
+      expect { nil_settings_class.new.uuid }.to_not raise_exception
+    end
   end
 
-  specify do
-    expect {
-      user.save!
-    }.to change {
-      user.attributes['uuid']
-    }.from(nil).to(fake_uuid)
+  context 'auto option' do
+    let(:fake_uuid) { '0c6bbc03-a269-44e2-8075-f442e1aac0c1' }
+    let(:default_uuid) { UniqIdentifier::FakeGenerator.uuid }
+    let(:generator) { OpenStruct.new(uuid: fake_uuid) }
+
+    let!(:custom_settings_class) { ClassGenerator.generate auto: false }
+    let!(:default_settings_class) { ClassGenerator.generate }
+
+    it 'disabled auto must not set uuid' do
+      expect(custom_settings_class.new.uuid).to be_nil
+    end
+
+    it 'enabled auto must set uuid' do
+      expect(default_settings_class.new.uuid).to_not be_nil
+    end
   end
 
   context 'persistence' do
-    let(:user_id) { user.id }
+    let!(:default_settings_class) { ClassGenerator.generate generator: SecureRandom }
 
-    context 'set uuid on save' do
-      before { user.save! }
-
-      specify do
-        expect(User.find(user_id).uuid).to eql(fake_uuid)
-      end
+    it 'must save uuid and return it' do
+      expect(default_settings_class.create!(name: 'example').uuid).to_not be_nil
     end
 
-    context 'keep given uuid on save' do
-      before do
-        user.uuid = fake_uuid
-        user.save!
-      end
-
-      specify do
-        expect(User.find(user_id).uuid).to eql(fake_uuid)
-      end
-    end
-
-    context 'keep given uuid on save' do
-      before do
-        user.attributes = { uuid: fake_uuid }
-        user.save!
-      end
-
-      specify do
-        expect(User.find(user_id).uuid).to eql(fake_uuid)
-      end
-    end
-
-    context 'keep given uuid on save' do
-      let(:user) { User.new({ uuid: fake_uuid }) }
-
-      before { user.save! }
-
-      specify do
-        expect(User.find(user_id).uuid).to eql(fake_uuid)
-      end
+    it 'must not change uuid during save' do
+      user = default_settings_class.new(name: 'example')
+      expect { user.save! }.to_not change { user.uuid }
     end
   end
 end

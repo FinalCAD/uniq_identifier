@@ -4,3 +4,8 @@ test:
       database: godfather
       hosts:
         - localhost:27017
+  clients:
+    default:
+      database: godfather
+      hosts:
+        - localhost:27017

@@ -67,15 +67,36 @@ end
 
 you can use the generator
 
-```ruby
+```bash
 rails g uniq_identifier:install
 rails g uniq_identifier:add <model>
 ```
 for mongoid use
 
-```ruby
+```bash
 rails g uniq_identifier:add <model> --orm=mongoid
 ```
+
+## Options
+
+```ruby
+class CustomGenerator
+  def uuid
+    # ...
+  end
+end
+
+class Bar
+  uniq_identifier generator: CustomGenerator,
+                  auto: bool,
+                  validate: bool
+end
+```
+
+* `generator` can be any object which respond to `uuid` signal or `:default` (default: `:default`)
+* `auto` if set to false then uuid will not be automatically generated after initialize (default: `true`)
+* `validate` if set to false validation will not be added (default: `true`)
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/uniq_identifier/fork )
