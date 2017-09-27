@@ -4,12 +4,12 @@ require 'coveralls'
 
 require 'rails/all'
 
-begin
-  require 'pry'
-rescue LoadError
-end
+require 'pry' rescue nil
 
-Coveralls.wear!
+require_relative './support/fake_generator'
+require_relative './support/class_generator'
+
+Coveralls.wear! rescue nil
 
 ENV['ADAPTER'] ||= 'active_record'
 load File.dirname(__FILE__) + "/support/adapters/#{ENV['ADAPTER']}.rb"
