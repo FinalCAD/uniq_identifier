@@ -6,24 +6,25 @@ module UniqIdentifier
   extend Configure
 
   def uniq_identifier(auto: true, validate: true, generator: :default)
-    prepend Hook
+    @@uniq_identifier_generator = generator
 
     class << self
-      attr_accessor :uniq_identifier_generator
+      def uniq_identifier_generator
+        if @@uniq_identifier_generator == :default
+          UniqIdentifier.configuration.generator
+        else
+          @@uniq_identifier_generator
+        end
+      end
     end
 
     if auto
-      after_initialize :set_uniq_identifier
+      before_validation :set_uniq_identifier
+      prepend Hook
     end
 
     if validate
       validates :uuid, presence: true, uniqueness: true
-    end
-
-    if generator == :default
-      self.uniq_identifier_generator = UniqIdentifier.configuration.generator
-    else
-      self.uniq_identifier_generator = generator
     end
   end
 end
