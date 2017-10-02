@@ -7,8 +7,6 @@ module UniqIdentifier
       super
     end
 
-    private
-
     def set_uniq_identifier
       generate_uniq_identifier! if self.uuid.nil?
     end
