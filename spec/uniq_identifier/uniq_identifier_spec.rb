@@ -26,6 +26,7 @@ describe UniqIdentifier do
     let!(:custom_settings_class) { ClassGenerator.generate generator: generator }
     let!(:default_settings_class) { ClassGenerator.generate }
     let!(:nil_settings_class) { ClassGenerator.generate generator: nil }
+    let!(:inherited_settings_class) { ::Class.new(custom_settings_class) }
 
     it 'must have different generator when some was given' do
       default_generator_current = default_settings_class.uniq_identifier_generator
@@ -43,6 +44,12 @@ describe UniqIdentifier do
 
     it 'must nil as generator can\'t raise error'  do
       expect { nil_settings_class.new.uuid }.to_not raise_exception
+    end
+
+    it 'inherited class must have parent generator' do
+      inherited_generator = inherited_settings_class.uniq_identifier_generator
+      custom_generator_current = custom_settings_class.uniq_identifier_generator
+      expect(inherited_generator).to be_eql custom_generator_current
     end
   end
 

@@ -6,21 +6,21 @@ module UniqIdentifier
   extend Configure
 
   def uniq_identifier(auto: true, validate: true, generator: :default)
-    @@uniq_identifier_generator = generator
+    @uniq_identifier_generator = generator
 
     class << self
       def uniq_identifier_generator
-        if @@uniq_identifier_generator == :default
+        if @uniq_identifier_generator == :default
           UniqIdentifier.configuration.generator
         else
-          @@uniq_identifier_generator
+          @uniq_identifier_generator
         end
       end
     end
 
     if auto
       before_validation :set_uniq_identifier
-      prepend Hook
+      include Hook
     end
 
     if validate
