@@ -1,12 +1,12 @@
 # UniqIdentifier
 
-[![Code Climate](https://codeclimate.com/github/joel/uniq_identifier.png)](https://codeclimate.com/github/joel/uniq_identifier)
+[![Code Climate](https://codeclimate.com/github/FinalCAD/uniq_identifier.png)](https://codeclimate.com/github/FinalCAD/uniq_identifier)
 
-[![Dependency Status](https://gemnasium.com/joel/uniq_identifier.png)](https://gemnasium.com/joel/uniq_identifier)
+[![Dependency Status](https://gemnasium.com/FinalCAD/uniq_identifier.png)](https://gemnasium.com/FinalCAD/uniq_identifier)
 
-[![Build Status](https://travis-ci.org/joel/uniq_identifier.png?branch=master)](https://travis-ci.org/joel/uniq_identifier) (Travis CI)
+[![Build Status](https://travis-ci.org/FinalCAD/uniq_identifier.png?branch=master)](https://travis-ci.org/FinalCAD/uniq_identifier) (Travis CI)
 
-[![Coverage Status](https://coveralls.io/repos/joel/uniq_identifier/badge.svg?branch=master)](https://coveralls.io/r/joel/uniq_identifier?branch=master)
+[![Coverage Status](https://coveralls.io/repos/FinalCAD/uniq_identifier/badge.svg?branch=master)](https://coveralls.io/r/FinalCAD/uniq_identifier?branch=master)
 
 [![Gem Version](https://badge.fury.io/rb/uniq_identifier.svg)](https://badge.fury.io/rb/uniq_identifier)
 
@@ -104,3 +104,13 @@ end
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+## Test
+
+```bash
+  bundle && ADAPTER=mongoid bundle
+```
+
+```bash
+  rake
+```

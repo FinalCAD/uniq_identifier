@@ -1,3 +1,10 @@
+### VERSION 0.1.1
+
+* Enhancements
+  * You now can define your own specific Generator for every model, not just in a global config level.
+  * You can deactivate generation auto to ensure a UUID is provided
+  * You can deactivate the validation and authorize recording a empty UUID
+
 ### VERSION 0.0.7
 
 * Enhancements
