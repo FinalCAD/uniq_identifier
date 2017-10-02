@@ -4,7 +4,7 @@
 
 [![Dependency Status](https://gemnasium.com/FinalCAD/uniq_identifier.png)](https://gemnasium.com/FinalCAD/uniq_identifier)
 
-[![Build Status](https://travis-ci.org/FinalCAD/uniq_identifier.png?branch=master)](https://travis-ci.org/FinalCAD/uniq_identifier) (Travis CI)
+[![Build Status](https://travis-ci.org/FinalCAD/uniq_identifier.svg?branch=master)](https://travis-ci.org/FinalCAD/uniq_identifier) (Travis CI)
 
 [![Coverage Status](https://coveralls.io/repos/FinalCAD/uniq_identifier/badge.svg?branch=master)](https://coveralls.io/r/FinalCAD/uniq_identifier?branch=master)
 
