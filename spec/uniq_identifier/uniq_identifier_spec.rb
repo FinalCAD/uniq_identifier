@@ -47,8 +47,8 @@ describe UniqIdentifier do
     end
 
     it 'inherited class must have parent generator' do
-      inherited_generator = inherited_settings_class.uniq_identifier_generator
       custom_generator_current = custom_settings_class.uniq_identifier_generator
+      inherited_generator = inherited_settings_class.uniq_identifier_generator
       expect(inherited_generator).to be_eql custom_generator_current
     end
   end

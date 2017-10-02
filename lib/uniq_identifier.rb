@@ -10,10 +10,13 @@ module UniqIdentifier
 
     class << self
       def uniq_identifier_generator
-        if @uniq_identifier_generator == :default
+        generator = @uniq_identifier_generator
+        if generator.nil? && superclass.respond_to?(:uniq_identifier_generator)
+          superclass.uniq_identifier_generator
+        elsif generator == :default
           UniqIdentifier.configuration.generator
         else
-          @uniq_identifier_generator
+          generator
         end
       end
     end
