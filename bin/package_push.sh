@@ -3,7 +3,7 @@
 #
 # ENV VAR to setup in CI : FURY_TOKEN
 
-for file in `ls *gemspec` do
+for file in `ls *gemspec`; do
     gem build $file
 done
 for file in `ls *gem`; do
