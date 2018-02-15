@@ -7,5 +7,9 @@ for file in `ls *gemspec`; do
     gem build $file
 done
 for file in `ls *gem`; do
-    curl -F package=@$file "https://${FURY_TOKEN}@push.fury.io/finalcad/"
+    curl -s -o /dev/null -w "%{http_code}" -F package=@$file "https://${FURY_TOKEN}@push.fury.io/finalcad/" | grep "200"
+    if [ $? -ne 0 ]; then
+        echo "Could not upload package"
+        exit 1
+    fi
 done

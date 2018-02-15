@@ -7,4 +7,4 @@ deploy:
   provider: script
   script: sh bin/package_push.sh
   on:
-    branch: RD-1545/use_gemfury
+    branch: master
