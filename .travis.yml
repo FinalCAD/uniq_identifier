@@ -3,3 +3,8 @@ rvm:
   - 2.3.1
 script: bundle exec rspec spec
 sudo: false # https://github.com/bundler/bundler/issues/3558#issuecomment-171347979 related to https://travis-ci.org/joel/uniq_identifier/builds/163131859
+deploy:
+  provider: script
+  script: sh bin/package_push.sh
+  on:
+    branch: master
